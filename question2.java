@@ -11,10 +11,14 @@ Discussion: Question 2 -- decodeString(s): Given an encoded string, return its
 */
 
 import java.lang.*;
-class Solution {
+class question2 {
     
-    public String decodeString(String s) {
-        if(s.length() <= 1){
+    public static void main(String args[]){
+        System.out.println("DecodedString (4[ab]): " + decodeString("4[ab]"));
+        System.out.println("DecodedString (2[b3[a]]): " + decodeString("2[b3[a]]"));
+    }
+    public static String decodeString(String s){
+         if(s.length() <= 1){
             return "";
         }
         
@@ -36,7 +40,6 @@ class Solution {
         String temp = "";
         String bucket = ""; 
         Boolean append = false;
-        
         for(int i = 1; i < s.length(); i++){
             
             if(Character.isLetter(s.charAt(i))){
@@ -58,9 +61,13 @@ class Solution {
         if(append){
             return appendWord(repeated, bucket + temp);
         }
+        if(repeated >= 10){
+            return appendWord(repeated, bucket + temp);
+        }
         return bucket + temp;
     }
-    static String appendWord(int x, String word){
+   
+    public static String appendWord(int x, String word){
         String appendedWord = "";
         for(int i = 0; i < x; i++){
             appendedWord += word;
